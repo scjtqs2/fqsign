@@ -58,7 +58,7 @@ class vpork:
                 print(ret)
                 continue
             if ret['ret']!=1:
-                print('登录失败')
+                print('签到失败')
                 ret=push.push(self.cqq,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
                 print(ret)
                 continue
