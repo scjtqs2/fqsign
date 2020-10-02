@@ -74,7 +74,7 @@ class pucloud:
             opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
             r = opener.open(req)
             response = r.read().decode('utf-8')
-            print(response)
+            # print(response)
             push.push(self.cqq,'账号'+account['email']+'签到pucloud成功')
         return True
 if __name__ == '__main__':
