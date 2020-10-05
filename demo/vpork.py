@@ -12,7 +12,8 @@ class vpork:
     list=[
         {'email':'你的账号','passwd':'你的密码'},
     ]
-    cqq='你的qq号' #需要找作者申请白名单
+    cqq = '你的qq号'  #请到 https://wx.scjtqs.com/qq 里面开启，访问需要先登录
+    token = '你的token'  #请到 https://wx.scjtqs.com/qq 里面开启，访问需要先登录
     def run(self):
         push = utils.qqpush.Qqpush()
         accounts=self.list
@@ -35,7 +36,7 @@ class vpork:
             logincheck=json.loads(response)
             if logincheck['ret']!=1 :
                 print('登录失败')
-                ret=push.push(self.cqq,'账号'+account['email']+'签到vpork登录失败')
+                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败')
                 print(ret)
                 continue
             print('账号'+account['email']+'登录成功')
@@ -54,16 +55,16 @@ class vpork:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(self.cqq,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
+                push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             if ret['ret']!=1:
                 print('签到失败')
-                ret=push.push(self.cqq,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
+                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             print(ret)
-            push.push(self.cqq,'账号'+account['email']+'签到vpork成功')
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork成功')
         return True
 if __name__ == '__main__':
     vpork().run()

@@ -3,18 +3,18 @@ import urllib
 import http.cookiejar
 import json
 class Qqpush:
-    pushurl='https://wx.scjtqs.com/qq/push/singlePush'
-    def push(self,qq,data):
-        url = self.pushurl
-        postdata = urllib.parse.urlencode({
-            'cqq': qq,
-            'content': data
-        }).encode('utf-8')
+    pushurl='https://wx.scjtqs.com/qq/push/pushMsg'
+    def push(self,qq,token,data):
+        url = self.pushurl+"?token="+token
+        post={}
+        post['qq']=qq
+        post['content']=[{"msgtype":"text","text":data}]
+        postdata=bytes(json.dumps(post),'utf8')
         header = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0",
-            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json',
         }
-        req = urllib.request.Request(url, postdata, header)
+        req = urllib.request.Request(url=url, data=postdata, headers=header)
         cj = http.cookiejar.CookieJar()
         opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
         r = opener.open(req)
