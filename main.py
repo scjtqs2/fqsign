@@ -1,14 +1,29 @@
-import demo
-import utils
-from demo.vpork import vpork
-from demo.pucloud import pucloud
+import glob
+import os
 
-try:
-    demo1=vpork().run()
-except Exception:
-    print('error')
+module_dir = "demo"
+module_suffix_extension = "*.py"
 
-try:
-    demo2=pucloud().run()
-except Exception:
-    print('error')
+
+def main():
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+
+    for pkg in glob.glob('%s/%s/*%s' % (current_dir, module_dir, module_suffix_extension)):
+        base_name = os.path.basename(pkg).split('.')[0]  # 模块名
+        pkg_name = module_dir + '.' + base_name  # 模块的路径
+        if base_name == '__init__':
+            continue
+        module = __import__(pkg_name, fromlist=[base_name])  # 导入模块，fromlist只会导入list目录
+        print("module type:", type(module))
+        model_class = getattr(module, base_name)  # 获取的是个类
+        print("model_class type:", type(model_class))
+        instance = model_class()  # 获取实例对象
+        print("instance type:", type(instance))
+        print("-" * 30)
+        try:
+            instance.run()
+        except Exception:
+            print("error")
+
+if __name__ == "__main__":
+    main()
