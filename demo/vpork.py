@@ -55,16 +55,25 @@ class vpork:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
+                push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             if ret['ret']!=1:
                 print('签到失败')
-                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败 msg:'+ret['msg'])
+                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             print(ret)
-            push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork成功')
+            #登出
+            url = "https://forever.ypork.com/user/logout"
+            header = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0",
+            }
+            req = urllib.request.Request(url, None, header)
+            opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+            r = opener.open(req)
+            response = r.read().decode('utf-8')
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork成功'+','+ret['msg']+',剩余流量'+ret['traffic'])
         return True
 if __name__ == '__main__':
     vpork().run()

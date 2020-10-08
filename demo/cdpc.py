@@ -36,7 +36,7 @@ class cdpc:
             logincheck=json.loads(response)
             if logincheck['ret']!=1 :
                 print('登录失败')
-                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork登录失败')
+                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到cdpc登录失败')
                 print(ret)
                 continue
             print('账号'+account['email']+'登录成功')
@@ -57,12 +57,12 @@ class cdpc:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(self.cqq,self.token,'账号'+account['email']+'签到pucloud登录失败 msg:'+ret['msg'])
+                push.push(self.cqq,self.token,'账号'+account['email']+'签到cdpc失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             if ret['ret']!=1:
                 print('签到失败')
-                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到pucloud登录失败 msg:'+ret['msg'])
+                ret=push.push(self.cqq,self.token,'账号'+account['email']+'签到cdpc失败 msg:'+ret['msg'])
                 print(ret)
                 continue
             print(ret)
@@ -76,7 +76,7 @@ class cdpc:
             r = opener.open(req)
             response = r.read().decode('utf-8')
             # print(response)
-            push.push(self.cqq,self.token,'账号'+account['email']+'签到pucloud成功')
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到cdpc成功'+','+ret['msg']+',剩余流量'+ret['traffic'])
         return True
 if __name__ == '__main__':
     cdpc().run()
