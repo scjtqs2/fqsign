@@ -2,6 +2,7 @@
 '''
 author scjtqs@qq.com
 https://forever.ypork.com/ 的飞机场每日签到，多账户版，多余的账户，请于List中删除
+注册地址：https://look.pork.icu/auth/register?code=wluP
 '''
 import urllib
 import http.cookiejar
