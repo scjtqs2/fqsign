@@ -74,7 +74,7 @@ class vpork:
             opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
             r = opener.open(req)
             response = r.read().decode('utf-8')
-            push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork成功'+','+ret['msg']+',剩余流量'+ret['traffic'])
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到vpork成功'+','+ret['msg']+',剩余流量'+ret['trafficInfo']['unUsedTraffic'])
         return True
 if __name__ == '__main__':
     vpork().run()
