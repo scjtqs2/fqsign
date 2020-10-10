@@ -2,6 +2,7 @@
 '''
 author scjtqs@qq.com
 https://pucloud.vip/ 的飞机场每日签到，多账户版，多余的账户，请于List中删除
+注册即送100GB流量,充值一块即可成为会员获得2T流量,邀请返利更变态可无限白嫖,更有专属客户端加持！http://invcode.puyun.me/0Vi15Z
 '''
 import urllib
 import http.cookiejar
@@ -76,7 +77,7 @@ class pucloud:
             r = opener.open(req)
             response = r.read().decode('utf-8')
             # print(response)
-            push.push(self.cqq,self.token,'账号'+account['email']+'签到pucloud成功'+','+ret['msg']+',剩余流量'+ret['traffic'])
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到pucloud成功'+','+ret['msg'])
         return True
 if __name__ == '__main__':
     pucloud().run()
