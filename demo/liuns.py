@@ -77,7 +77,7 @@ class liuns:
             r = opener.open(req)
             response = r.read().decode('utf-8')
             # print(response)
-            push.push(self.cqq,self.token,'账号'+account['email']+'签到liuns成功'+','+ret['msg']+',剩余流量'+ret['traffic'])
+            push.push(self.cqq,self.token,'账号'+account['email']+'签到liuns成功'+','+ret['msg'])
         return True
 if __name__ == '__main__':
     liuns().run()
