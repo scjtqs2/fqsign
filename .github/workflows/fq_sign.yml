@@ -6,8 +6,8 @@ on:
   gollum:
   workflow_dispatch:
   schedule:
-     - cron: "30 6 * * *"
-
+     - cron: "30 22 * * *"
+  # cron表达式,actions任务时区为UTC时区。
 jobs:
   deploy:
 
