@@ -7,6 +7,7 @@ qq推送 请到 https://wx.scjtqs.com/qq/user 里面获取
 # 添加github的 actions 方法使用
 
 ### 1.先把本项目fork到你自己的账号下去
+本项目地址：https://github.com/scjtqs/fqsign
 
 ### 2.将参数填到Secrets
 
@@ -78,6 +79,14 @@ TOKEN | Github Personal access tokens
 在最新的代码中，已经加上自动同步上游代码的`Action`，将会定时在每周五`16`点执行，文件地址在`.github/workflows/auto_merge.yml`。
 
 同时您也可以安装[pull](https://github.com/apps/pull)应用，也可实现自动同步上游代码。
+
+# 安利一下clash
+>可以将酸酸乳、v2ray 等订阅转换成clash订阅
+>
+>我提供一个自用(写)的[转换工具](https://wx.scjtqs.com/utils/user/v2toclash)，做了个建议的qq登录授权。
+>
+> 得到一个新的url地址当做订阅地址就行了
+
 
 # 申明
 
