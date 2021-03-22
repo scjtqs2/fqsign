@@ -1,0 +1,21 @@
+{
+  "users": {
+      "cdpc": [
+    {
+      "email": "你的账号",
+      "passwd": "你的密码"
+    },
+    {
+      "email": "你的账号2",
+      "passwd":"你的密码2"
+    }
+  ],
+  "linus": [],
+  "pucloud": [],
+  "vpork": []
+  },
+  "qqpush": {
+    "qq": "1234567",
+    "token": "abcdefg"
+  }
+}

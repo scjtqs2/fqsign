@@ -1,3 +1,4 @@
+import logging
 import glob
 import os
 
@@ -19,11 +20,11 @@ def main():
         # print("model_class type:", type(model_class))
         instance = model_class()  # 获取实例对象
         print("instance type:", type(instance))
-        print("-" * 30)
         try:
             instance.run()
         except Exception:
-            print("error")
+            logging.error("run error")
+        print("-" * 30)
 
 if __name__ == "__main__":
     main()
