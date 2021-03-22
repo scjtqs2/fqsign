@@ -6,7 +6,9 @@ qq推送 请到 https://wx.scjtqs.com/qq/user 里面获取
 
 # 添加github的 actions 方法使用
 
-### 1.将参数填到Secrets
+### 1.先把本项目fork到你自己的账号下去
+
+### 2.将参数填到Secrets
 
 在`Secrets`中的`Name`和`Value`格式如下：
 
@@ -46,11 +48,11 @@ USERS_COVER | config.json中内容
 
 注意：不要将个人信息填写到仓库`config.json`文件中（不要动这个文件就没事），以免泄露。
 
-### 2.开启Actions
+### 3.开启Actions
 
 默认`Actions`处于禁止状态，在`Actions`选项中开启`Actions`功能，把那个绿色的长按钮点一下。如果看到左侧工作流上有黄色`!`号，还需继续开启。
 
-### 3.进行一次push操作
+### 4.进行一次push操作
 
 `push`操作会触发工作流运行。
 
