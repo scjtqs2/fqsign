@@ -46,7 +46,7 @@ class vpork_vip:
             logincheck = json.loads(response)
             if logincheck['ret'] != 1:
                 print('登录失败')
-                ret = push.push(self.cqq, self.token, '账号' + account['email'] + '签到vpork_vip登录失败')
+                ret = push.push(self.cqq, self.token, '账号' + account['email'] + '签到' + self.config_name + '登录失败')
                 print(ret)
                 continue
             print('账号' + account['email'] + '登录成功')
@@ -65,12 +65,14 @@ class vpork_vip:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(self.cqq, self.token, '账号' + account['email'] + '签到vpork_vip失败 msg:' + ret['msg'])
+                push.push(self.cqq, self.token,
+                          '账号' + account['email'] + '签到' + self.config_name + '失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             if ret['ret'] != 1:
                 print('签到失败')
-                ret = push.push(self.cqq, self.token, '账号' + account['email'] + '签到vpork_vip失败 msg:' + ret['msg'])
+                ret = push.push(self.cqq, self.token,
+                                '账号' + account['email'] + '签到' + self.config_name + '失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             print(ret)
@@ -84,12 +86,11 @@ class vpork_vip:
             r = opener.open(req)
             response = r.read().decode('utf-8')
             if self.cqq == '' or self.token == '':
-                logging.info('账号' + account['email'] + '签到vpork_vip成功' + ',' + ret['msg'] + ',剩余流量' + ret['trafficInfo'][
-                    'unUsedTraffic'])
+                logging.info(
+                    '账号' + account['email'] + '签到' + self.config_name + '成功' + ',' + ret['msg'])
             else:
                 push.push(self.cqq, self.token,
-                          '账号' + account['email'] + '签到vpork_vip成功' + ',' + ret['msg'] + ',剩余流量' + ret['trafficInfo'][
-                              'unUsedTraffic'])
+                          '账号' + account['email'] + '签到' + self.config_name + '成功' + ',' + ret['msg'])
         return True
 
 
