@@ -7,7 +7,9 @@
     },
     {
       "email": "你的账号2",
-      "passwd":"你的密码2"
+      "passwd":"你的密码2",
+      "qq": "1234567",
+      "token": "abcdefg"
     }
   ],
   "linus": [],
