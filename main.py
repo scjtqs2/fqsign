@@ -22,8 +22,8 @@ def main():
         print("instance type:", type(instance))
         try:
             instance.run()
-        except Exception:
-            logging.error("run error")
+        except Exception as e:
+            logging.error("run error",e)
         print("-" * 30)
 
 if __name__ == "__main__":

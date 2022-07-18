@@ -51,7 +51,7 @@ class vpork:
             logincheck = json.loads(response)
             if logincheck['ret'] != 1:
                 print('登录失败')
-                ret = push.push(userCqq, useToken, '账号' + account['email'] + '签到vpork登录失败')
+                ret = push.push(userCqq, userToken, '账号' + account['email'] + '签到vpork登录失败')
                 print(ret)
                 continue
             print('账号' + account['email'] + '登录成功')
@@ -70,12 +70,12 @@ class vpork:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(userCqq, useToken, '账号' + account['email'] + '签到vpork失败 msg:' + ret['msg'])
+                push.push(userCqq, userToken, '账号' + account['email'] + '签到vpork失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             if ret['ret'] != 1:
                 print('签到失败')
-                ret = push.push(userCqq, useToken, '账号' + account['email'] + '签到vpork失败 msg:' + ret['msg'])
+                ret = push.push(userCqq, userToken, '账号' + account['email'] + '签到vpork失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             print(ret)
@@ -92,7 +92,7 @@ class vpork:
                 logging.info('账号' + account['email'] + '签到vpork成功' + ',' + ret['msg'] + ',剩余流量' + ret['trafficInfo'][
                     'unUsedTraffic'])
             else:
-                push.push(userCqq, useToken, 
+                push.push(userCqq, userToken,
                           '账号' + account['email'] + '签到vpork成功' + ',' + ret['msg'] + ',剩余流量' + ret['trafficInfo'][
                               'unUsedTraffic'])
         return True
