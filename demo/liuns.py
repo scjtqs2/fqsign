@@ -38,6 +38,10 @@ class liuns:
                 "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
             }
             req = urllib.request.Request(url, postdata, header)
+            
+            userCqq = account['cqq'] if ('cqq' in account) else self.cqq
+            userToken = account['token'] if ('token' in account) else self.token
+
             # 自动记住cookie
             cj = http.cookiejar.CookieJar()
             opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
@@ -46,7 +50,7 @@ class liuns:
             logincheck = json.loads(response)
             if logincheck['ret'] != 1:
                 print('登录失败')
-                ret = push.push(self.cqq, self.token, '账号' + account['email'] + '签到liuns登录失败')
+                ret = push.push(userCqq, userToken, '账号' + account['email'] + '签到liuns登录失败')
                 print(ret)
                 continue
             print('账号' + account['email'] + '登录成功')
@@ -67,12 +71,12 @@ class liuns:
                 print(ret)
             except ValueError:
                 print('签到失败')
-                push.push(self.cqq, self.token, '账号' + account['email'] + '签到liuns失败 msg:' + ret['msg'])
+                push.push(userCqq, userToken, '账号' + account['email'] + '签到liuns失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             if ret['ret'] != 1:
                 print('签到失败')
-                ret = push.push(self.cqq, self.token, '账号' + account['email'] + '签到liuns失败 msg:' + ret['msg'])
+                ret = push.push(userCqq, userToken, '账号' + account['email'] + '签到liuns失败 msg:' + ret['msg'])
                 print(ret)
                 continue
             print(ret)
@@ -86,10 +90,10 @@ class liuns:
             r = opener.open(req)
             response = r.read().decode('utf-8')
             # print(response)
-            if self.cqq == '' or self.token == '':
+            if userCqq == '' or userToken == '':
                 logging.info('账号' + account['email'] + '签到liuns成功' + ',' + ret['msg'])
             else:
-                push.push(self.cqq, self.token, '账号' + account['email'] + '签到liuns成功' + ',' + ret['msg'])
+                push.push(userCqq, userToken, '账号' + account['email'] + '签到liuns成功' + ',' + ret['msg'])
         return True
 
 

@@ -29,7 +29,10 @@ USERS_COVER | config.json中内容
     },
     {
       "email": "你的账号2",
-      "passwd":"你的密码2"
+      "passwd":"你的密码2",
+      // 如果配置了qq和token，优先使用用户配置，如用户未配置，使用全局qqpush
+      "qq": "1234567",   
+      "token": "abcdefg"
     }
   ],
   "linus": [],
