@@ -29,7 +29,7 @@ class vpork:
             if 'email' not in account or 'passwd' not in account:
                 continue
             ## 登录
-            url = "https://forever.ypork.com/auth/login"
+            url = "https://forever.pork16.com/auth/login"
             postdata = urllib.parse.urlencode({
                 'email': account['email'],
                 'passwd': account['passwd']
@@ -51,7 +51,7 @@ class vpork:
                 continue
             print('账号' + account['email'] + '登录成功')
             ## 签到
-            url = "https://forever.ypork.com/user/checkin"
+            url = "https://forever.pork16.com/user/checkin"
             postdata = urllib.parse.urlencode({}).encode('utf-8')
             header = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
@@ -75,7 +75,7 @@ class vpork:
                 continue
             print(ret)
             # 登出
-            url = "https://forever.ypork.com/user/logout"
+            url = "https://forever.pork16.com/user/logout"
             header = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0",
             }
